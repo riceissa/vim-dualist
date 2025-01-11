@@ -25,7 +25,7 @@ endfunction
 
 function! s:ColorListchars() abort
   if &t_Co >= 16
-    " Changing ctermbg is useful for seeing tab with :set list
+    " Changing ctermbg is useful for seeing the full extent of tabs with :set list
     if &background ==# "dark"
       highlight SpecialKey ctermfg=LightGray ctermbg=DarkGray
       if has('nvim')
@@ -58,7 +58,9 @@ if has('autocmd')
   augroup END
 endif
 
-set list
+" I used to default :set list here, but I think it's better to let the user decide
+" set list
+
 call <SID>ResetInsertLeave()
 if exists("g:dualist_color_listchars") && g:dualist_color_listchars == 1
   call <SID>ColorListchars()
