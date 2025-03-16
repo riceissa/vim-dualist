@@ -9,17 +9,17 @@ let s:use_unicode = !has('win32') && (&termencoding ==# 'utf-8' || &encoding ==#
 
 function! s:ResetInsertEnter() abort
   if s:use_unicode
-    let &listchars = "tab:\u25b8 ,nbsp:\u2423"
+    exe "set listchars-=trail:\u00b7"
   else
-    let &listchars = "tab:> ,nbsp:+"
+    set listchars-=trail:-
   endif
 endfunction
 
 function! s:ResetInsertLeave() abort
   if s:use_unicode
-    let &listchars = "tab:\u25b8 ,trail:\u00b7,nbsp:\u2423"
+    exe "set listchars+=trail:\u00b7"
   else
-    let &listchars = "tab:> ,trail:-,nbsp:+"
+    set listchars+=trail:-
   endif
 endfunction
 
